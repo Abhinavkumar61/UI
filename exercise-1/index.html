@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 1</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div id="demo">
+        <!-- <button onclick="getUserData()">Get User List</button>
+
+
+        <div>
+            <p>Below are the results</p>
+            <ul id="resultList"></ul>
+        </div> -->
+    </div>
+    <script src="./js/index.js"></script>
+    <script id="template" type="text/x-template">
+        <div>
+            {{#each this}}
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul><li class="line_item"><div class="item_wrapper"><img class="" src={{avatar}}> Name: {{name}} id:{{id}} created at:{{createdAt}}</div></li></ul>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+</script>
+    
+</body>
+
+</html>

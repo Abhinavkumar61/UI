@@ -1,0 +1,17 @@
+
+.item_wrapper {
+    display: flex;
+    width: max-content;
+}
+
+.item_wrapper img {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgb(128 128 128 / 20%);
+    border-radius: 110%;
+}
+
+.line_item {
+    padding: 10px;
+    border: 1px solid rgb(128 128 128 / 20%);
+}
