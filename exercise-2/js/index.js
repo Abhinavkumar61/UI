@@ -1,5 +1,5 @@
 
-function createVariables(id,type, selector) {
+function createVariables(id, type, selector) {
     var value = type === 'id' ? document[selector](id) : document[selector](id)[0];
     function make() {
         return value;
@@ -7,19 +7,19 @@ function createVariables(id,type, selector) {
     return make();
 }
 
-var taskInput = createVariables("new-task",'id','getElementById');
-var addButton = createVariables("button",'tag','getElementsByTagName');
-var incompleteTasksHolder = createVariables("incomplete-tasks",'id','getElementById');
-var completedTasksHolder = createVariables("completed-tasks",'id','getElementById');
+var taskInput = createVariables("new-task", 'id', 'getElementById');
+var addButton = createVariables("button", 'tag', 'getElementsByTagName');
+var incompleteTasksHolder = createVariables("incomplete-tasks", 'id', 'getElementById');
+var completedTasksHolder = createVariables("completed-tasks", 'id', 'getElementById');
 
-window.onload = function() {
-    if(localStorage.getItem("list") && JSON.parse(localStorage.getItem("list")).length > -1){
+window.onload = function () {
+    if (localStorage.getItem("list") && JSON.parse(localStorage.getItem("list")).length > -1) {
         let list = JSON.parse(localStorage.getItem("list"));
         list.forEach(element => {
             getLocalStorageTasks(element);
         });
     }
-  }
+}
 
 var createNewTaskElement = function (taskString, arr) {
     listItem = document.createElement("li");
@@ -47,41 +47,43 @@ var createNewTaskElement = function (taskString, arr) {
 };
 
 var getLocalStorageTasks = function (value) {
-    var listItemName = value 
+    var listItemName = value
     listItem = createNewTaskElement(listItemName)
     incompleteTasksHolder.appendChild(listItem)
     bindTaskEvents(listItem, taskCompleted)
 };
 
 var addTask = function () {
-    if(taskInput.value){
+    if (taskInput.value) {
         taskInput.removeAttribute('required');
-    var listItemName = taskInput.value
-    listItem = createNewTaskElement(listItemName)
-    incompleteTasksHolder.appendChild(listItem)
-    bindTaskEvents(listItem, taskCompleted)
-    taskInput.value = "";
-    setTasksToLocalStorage(listItemName, "add")
+        var listItemName = taskInput.value
+        listItem = createNewTaskElement(listItemName)
+        incompleteTasksHolder.appendChild(listItem)
+        bindTaskEvents(listItem, taskCompleted)
+        taskInput.value = "";
+        setTasksToLocalStorage(listItemName, "add")
     } else {
-        taskInput.setAttribute('required',true);
+        taskInput.setAttribute('required', true);
     }
 };
 
-var setTasksToLocalStorage = function(listItemName, type, currentValue) {
-    if(localStorage.getItem("list") && JSON.parse(localStorage.getItem("list")).length > -1){
+var setTasksToLocalStorage = function (listItemName, type, currentValue) {
+    if (localStorage.length && localStorage.getItem("list") && JSON.parse(localStorage.getItem("list")).length > -1) {
         let getvalues = JSON.parse(localStorage.getItem("list"));
-        if(type === 'delete' && getvalues.includes(listItemName)){
-            getvalues.splice(getvalues.indexOf(listItemName),1);
-        } else if(type === 'edit' && getvalues.includes(currentValue)){
+        if (type === 'delete' && getvalues.includes(listItemName)) {
+            getvalues.splice(getvalues.indexOf(listItemName), 1);
+        } else if (type === 'edit' && getvalues.includes(currentValue)) {
             getvalues[getvalues.indexOf(currentValue)] = listItemName;
         }
         else {
-        let addValues = getvalues.push(listItemName);
+            let addValues = getvalues.push(listItemName);
         }
         localStorage.setItem("list", JSON.stringify(getvalues));
     } else {
-        let value = [listItemName]
-        localStorage.setItem("list", JSON.stringify(value));
+        if (type !== 'delete') {
+            let value = [listItemName]
+            localStorage.setItem("list", JSON.stringify(value));
+        }
     }
 }
 
@@ -108,7 +110,9 @@ var deleteTask = function (el) {
     var listItem = this.parentNode;
     var ul = listItem.parentNode;
     ul.removeChild(listItem);
-    setTasksToLocalStorage(listItem.getElementsByTagName("label")[0].textContent, 'delete')
+    if (listItem) {
+        setTasksToLocalStorage(listItem.getElementsByTagName("label")[0].textContent, 'delete');
+    }
 };
 
 var taskCompleted = function (el) {

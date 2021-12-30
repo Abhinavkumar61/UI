@@ -3,55 +3,60 @@
 
 <head>
     <title>Todo list App</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/style.css" >
 </head>
 
 <body>
     <div class="flex-container">
-        <div>
-            <p>
-                <label id="new-task-label" for="new-task" style="display: block; margin: 0 0 20px">
-                    <b>Add Item</b>
-                </label>
-                <input id="new-task" type="text">
-                <button>Add</button>
-            </p>
-        </div>
-        <div>
-            <h3>
-                <b>Todo</b>
-            </h3>
-            <ul id="incomplete-tasks">
-                <li>
-                    <input type="checkbox">
-                    <label>Pay Bills</label>
-                    <input type="text">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                <li class="editMode">
-                    <input type="checkbox">
-                    <label>Go Shopping</label>
-                    <input type="text" value="Go Shopping">
-                    <button class="edit">Save</button>
-                    <button class="delete">Delete</button>
-                </li>
-            </ul>
-        </div>
-        <div>
-            <h3>
-                <b>Completed</b>
-            </h3>
-            <ul id="completed-tasks">
-                <li>
-                    <input type="checkbox" checked>
-                    <label>See the Doctor</label>
-                    <input type="text">
-                    <button class="edit">Edit</button>
-                    <button class="delete">Delete</button>
-                </li>
-            </ul>
-        </div>
+        <form>
+            <div>
+                <p>
+                <form>
+                    <label id="new-task-label" for="new-task" style="display: block; margin: 0 0 20px">
+                        <b>Add Item</b>
+                    </label>
+                        <input id="new-task" name="newtask" title="add new task" type="text">
+                    <button role="add task button">Add</button>
+                </form> 
+                </p>
+            </div>
+            <div>
+                <h3>
+                    <b>Todo</b>
+                </h3>
+                <ul id="incomplete-tasks">
+                    <li>
+                        <input type="checkbox">
+                        <label>Pay Bills</label>
+                        <input type="text">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    <li class="editMode">
+                        <input type="checkbox">
+                        <label>Go Shopping</label>
+                        <input type="text" value="Go Shopping">
+                        <button class="edit">Save</button>
+                        <button class="delete">Delete</button>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>
+                    <b>Completed</b>
+                </h3>
+                <ul id="completed-tasks">
+                    <li>
+                        <input type="checkbox" checked>
+                        <label>See the Doctor</label>
+                        <input type="text">
+                        <button class="edit">Edit</button>
+                        <button class="delete">Delete</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
     </div>
 
 

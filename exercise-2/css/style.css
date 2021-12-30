@@ -9,6 +9,7 @@ html body {
     flex-direction: column;
     width: 600px;
     margin: 100px auto 0;
+    overflow: hidden
   }
 
   html body ul {
@@ -39,8 +40,6 @@ html body {
     font-family: Lato, sans-serif;
     cursor: pointer;;
   }
-
-
 
 
   html body button :hover {
@@ -75,6 +74,10 @@ html body {
   html body input[type="text"] :focus {
     color: #333;
   }
+
+  :focus {
+    outline: 1px solid black;   
+}
 
   /* New Task */
   html body input#new-task   {
@@ -144,3 +147,17 @@ html body {
   input:valid {
     border: 2px solid black;
   }
+
+@media only screen and (max-width: 375px) {
+  html body .flex-container {
+    width : 100%;
+  }
+}
+
+
+@media only screen and (min-width: 375px) {
+  html body .flex-container {
+    width : 100%;
+    align-items: center;
+  }
+}
