@@ -4,12 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "start": "node index.js",
+    "test": "open tests/index.html"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2",
-    "jest": "^27.4.5"
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "jest": "^27.4.5",
+    "open": "^8.4.0"
   }
 }
